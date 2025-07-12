@@ -16,9 +16,17 @@ It combines AI skin analysis with personal journaling and spiritual encouragemen
 
 ---
 
-## 👥 Team Members & Roles
+## 👥 Team Members & Tasks
 
- ## 👥 Team Members & Tasks | Member | GitHub Username | Role | Assigned Tasks | |---------------|---------------------|------------------------|----------------| | Whitney  | `git-Whitney` | Team Lead & Integrator | 🗂️ Folder structure<br>🔁 Screen navigation<br>📦 Integration<br>📝 PR reviews | | Wilson | `Wilsonthoma` | UI/UX Designer | 🎨 Design Welcome/Login/Dashboard<br>🎨 Style screens<br>🔘 Button layouts | | selina | `doctor-nails` | Scan/AI | 🤳 Scan screen<br>🧠 AI mock result<br>📷 Image picker | | Joan | `Joan6316` | Journal/Verse | 📓 Journal screen<br>📖 Verse of the day<br>💾 Save/load notes | | Steve | `Vohtieno` | Testing/Deployment | 🧪 Test screens<br>📱 Android builds<br>🔍 User feedback | | Patience | `Pesh638` | Content & Help | ❓ Help screen<br>💬 Onboarding messages<br>📜 About Us<br>🔤 Text proofreading | 
+| Member     | GitHub Username   | Role                   | Assigned Tasks |
+|------------|-------------------|------------------------|----------------|
+| Whitney    | `@git-Whitney`    | Team Lead & Integrator | 🗂️ Folder structure<br>🔁 Screen navigation<br>📦 Integration<br>📝 PR reviews |
+| Wilson     | `@Wilsonthoma`    | UI/UX Designer         | 🎨 Design Welcome/Login/Dashboard<br>🎨 Style screens<br>🔘 Button layouts |
+| Selina     | `@doctor-nails`   | Scan/AI                | 🤳 Scan screen<br>🧠 AI mock result<br>📷 Image picker |
+| Joan       | `@Joan6316`       | Journal/Verse          | 📓 Journal screen<br>📖 Verse of the day<br>💾 Save/load notes |
+| Steve      | `@Vohtieno`       | Testing/Deployment     | 🧪 Test screens<br>📱 Android builds<br>🔍 User feedback |
+| Patience   | `@Pesh638`        | Content & Help         | ❓ Help screen<br>💬 Onboarding messages<br>📜 About Us<br>🔤 Text proofreading |
+
 
 ## 🚀 Getting Started
 
