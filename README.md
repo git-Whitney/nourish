@@ -109,14 +109,42 @@ _Use this section to track everyone's progress. Mark tasks as complete using ✅
 - [ ] Optional: Suggest or design splash screen content (logo + app title loading page)
 
 
-## 📅 Weekly Goal (Update as needed)
+## 📅 Weekly Goals
 
-- Week 1: Basic layout + navigation
-- Week 2: Functional screens built by each member
-- Week 3: Testing, integration, polish
-- Week 4: Submit project & prepare presentation
+> 💡 Adjust based on team pace. Each member should aim to finish their screen by Week 2–3.
 
 ---
 
-_✅ Keep updating this as progress is made. Each member can check off their tasks in pull requests or team updates._
+### ✅ Week 1 – Planning & Setup
+- [x] Finalize idea, app name, and team roles
+- [x] Create GitHub repo and invite collaborators
+- [x] Set up Flutter project structure
+- [x] Create initial wireframe/prototype and assign screens
+- [x] Each member sets up Flutter + Git locally
 
+---
+
+### 🚧 Week 2 – Screen Development
+- [ ] Each member builds their assigned screen(s)
+- [ ] Add navigation between screens via `main.dart`
+- [ ] UI polish (colors, layout, font, icons)
+- [ ] Start content drafting (welcome text, verses, tips)
+- [ ] Begin basic testing (run on Chrome/phone)
+
+---
+
+### 🛠️ Week 3 – Integration & Feature Testing
+- [ ] Connect screens together
+- [ ] Implement features like image picker, local storage
+- [ ] Finalize journal + AI logic (mock okay)
+- [ ] Test on real Android devices
+- [ ] Team code review & bug fixing
+
+---
+
+### 🎯 Week 4 – Polish & Submission
+- [ ] Final styling tweaks and text proofreading
+- [ ] Add splash screen and about/help pages
+- [ ] Generate APK and test final build
+- [ ] Update `README.md` and project board
+- [ ] Submit project and prepare demo/presentation
