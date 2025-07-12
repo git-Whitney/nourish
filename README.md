@@ -18,17 +18,7 @@ It combines AI skin analysis with personal journaling and spiritual encouragemen
 
 ## 👥 Team Members & Roles
 
-| Name                | GitHub Username      | Role                      |
-|---------------------|----------------------|---------------------------|
-| Whitney | `git-Whitney`       | Team Lead / Integration   |
-|Wilson          | `Wilsonthoma`          | UI/UX Design (Screens)    |
-| Selina           | `doctor-nails`          | AI & Skin Analysis        |
-| Joan          | `Joan6316`          | Journal + Devotional Logic|
-| Steve         | `Vohtieno`          | Testing & Deployment      |
-
-_Replace GitHub usernames with actual ones after inviting everyone._
-
----
+<pre> ## 👥 Team Members & Tasks | Member | GitHub Username | Role | Assigned Tasks | |---------------|---------------------|------------------------|----------------| | Whitney  | `@git-Whitney` | Team Lead & Integrator | 🗂️ Folder structure<br>🔁 Screen navigation<br>📦 Integration<br>📝 PR reviews | | Wilson | `Wilsonthoma` | UI/UX Designer | 🎨 Design Welcome/Login/Dashboard<br>🎨 Style screens<br>🔘 Button layouts | | selina | `doctor-nails` | Scan/AI | 🤳 Scan screen<br>🧠 AI mock result<br>📷 Image picker | | Joan | `Joan6316` | Journal/Verse | 📓 Journal screen<br>📖 Verse of the day<br>💾 Save/load notes | | Steve | `Vohtieno` | Testing/Deployment | 🧪 Test screens<br>📱 Android builds<br>🔍 User feedback | | Patience | `Pesh638` | Content & Help | ❓ Help screen<br>💬 Onboarding messages<br>📜 About Us<br>🔤 Text proofreading | </pre>
 
 ## 🚀 Getting Started
 
@@ -53,7 +43,7 @@ _Use this section to track everyone's progress. Mark tasks as complete using ✅
 
 ---
 
-### 👩‍💻 Whitney Nyaviage (Team Lead / Integration)
+### 👩‍💻 Whitney  (Team Lead / Integration)
 - [ ] Create `README.md` and push project to GitHub ✅
 - [ ] Set up folder structure in `lib/screens/`
 - [ ] Set up navigation between screens (`main.dart`)
@@ -63,7 +53,7 @@ _Use this section to track everyone's progress. Mark tasks as complete using ✅
 
 ---
 
-### 🎨 Member 2 (UI/UX Design)
+### 🎨 Wilson (UI/UX Design)
 - [ ] Build `welcome_screen.dart` with logo + start button
 - [ ] Design `login_screen.dart` (form, buttons, layout)
 - [ ] Design `dashboard_screen.dart` with main options
@@ -72,7 +62,7 @@ _Use this section to track everyone's progress. Mark tasks as complete using ✅
 
 ---
 
-### 🤖 Member 3 (Skin Analysis & AI)
+### 🤖 Selina (Skin Analysis & AI)
 - [ ] Create `scan_screen.dart`
 - [ ] Integrate `image_picker` plugin
 - [ ] Simulate AI analysis result (e.g. dry/oily skin output)
@@ -81,7 +71,7 @@ _Use this section to track everyone's progress. Mark tasks as complete using ✅
 
 ---
 
-### 📓 Member 4 (Devotionals & Journal)
+### 📓 Joan (Devotionals & Journal)
 - [ ] Create `journal_screen.dart` with text input
 - [ ] Save and retrieve notes locally (use provider/shared_preferences)
 - [ ] Add verse of the day (static or API-based)
@@ -90,7 +80,7 @@ _Use this section to track everyone's progress. Mark tasks as complete using ✅
 
 ---
 
-### 🧪 Member 5 (Testing & Deployment)
+### 🧪 Steve (Testing & Deployment)
 - [ ] Test app on physical Android devices
 - [ ] Fix bugs or layout issues reported by team
 - [ ] Run `flutter build apk` and share for review
