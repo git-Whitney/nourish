@@ -88,6 +88,7 @@ _Use this section to track everyone's progress. Mark tasks as complete using ✅
 
 ---
 
+
 ### 🧪 Steve (Testing & Deployment)
 - [ ] Test app on physical Android devices
 - [ ] Fix bugs or layout issues reported by team
@@ -96,6 +97,17 @@ _Use this section to track everyone's progress. Mark tasks as complete using ✅
 - [ ] Assist others with Git if needed
 
 ---
+---
+
+### 📜 Patience (Content & Help)
+
+- [ ] Create `help_screen.dart` to explain how the app works
+- [ ] Write short onboarding text for `welcome_screen.dart` and `login_screen.dart`
+- [ ] Build `about_us_screen.dart` with team names, app purpose, and hackathon note
+- [ ] Suggest 3–5 daily skincare tips to appear after scan or on dashboard
+- [ ] Proofread all button text, labels, and screen titles for clarity and grammar
+- [ ] Optional: Suggest or design splash screen content (logo + app title loading page)
+
 
 ## 📅 Weekly Goal (Update as needed)
 
