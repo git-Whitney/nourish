@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'screens/welcome_screen.dart'; // 👈 This must point to your custom screen
+import 'screens/welcome_screen.dart'; // 👈 Custom screen
 
 void main() {
   runApp(const MyApp());
@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.green,
       ),
-      home: const WelcomeScreen(), // 👈 This is the key line!
+      home: const WelcomeScreen(), // 👈 Start from Welcome
     );
   }
 }

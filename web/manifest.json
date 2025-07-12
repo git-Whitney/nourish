@@ -1,6 +1,11 @@
 {
+<<<<<<< HEAD
     "name": "nourish_app",
     "short_name": "nourish_app",
+=======
+    "name": "nourish",
+    "short_name": "nourish",
+>>>>>>> 6b99f94bd690f5c75eee20be8e54042955648ef3
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
