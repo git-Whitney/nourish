@@ -41,7 +41,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.19.1"
-<<<<<<< HEAD
   cross_file:
     dependency: transitive
     description:
@@ -50,8 +49,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.3.4+2"
-=======
->>>>>>> 6b99f94bd690f5c75eee20be8e54042955648ef3
   cupertino_icons:
     dependency: "direct main"
     description:
@@ -68,7 +65,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.3.3"
-<<<<<<< HEAD
   file_selector_linux:
     dependency: transitive
     description:
@@ -101,23 +97,11 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.9.3+4"
-=======
->>>>>>> 6b99f94bd690f5c75eee20be8e54042955648ef3
   flutter:
     dependency: "direct main"
     description: flutter
     source: sdk
     version: "0.0.0"
-<<<<<<< HEAD
-  flutter_plugin_android_lifecycle:
-    dependency: transitive
-    description:
-      name: flutter_plugin_android_lifecycle
-      sha256: f948e346c12f8d5480d2825e03de228d0eb8c3a737e4cdaa122267b89c022b5e
-      url: "https://pub.dev"
-    source: hosted
-    version: "2.0.28"
-=======
   flutter_lints:
     dependency: "direct dev"
     description:
@@ -126,13 +110,19 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "5.0.0"
->>>>>>> 6b99f94bd690f5c75eee20be8e54042955648ef3
+  flutter_plugin_android_lifecycle:
+    dependency: transitive
+    description:
+      name: flutter_plugin_android_lifecycle
+      sha256: f948e346c12f8d5480d2825e03de228d0eb8c3a737e4cdaa122267b89c022b5e
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.0.28"
   flutter_test:
     dependency: "direct dev"
     description: flutter
     source: sdk
     version: "0.0.0"
-<<<<<<< HEAD
   flutter_web_plugins:
     dependency: transitive
     description: flutter
@@ -166,10 +156,10 @@ packages:
     dependency: transitive
     description:
       name: image_picker_android
-      sha256: "317a5d961cec5b34e777b9252393f2afbd23084aa6e60fcf601dcf6341b9ebeb"
+      sha256: "6fae381e6af2bbe0365a5e4ce1db3959462fa0c4d234facf070746024bb80c8d"
       url: "https://pub.dev"
     source: hosted
-    version: "0.8.12+23"
+    version: "0.8.12+24"
   image_picker_for_web:
     dependency: transitive
     description:
@@ -218,8 +208,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.2.1+1"
-=======
->>>>>>> 6b99f94bd690f5c75eee20be8e54042955648ef3
   leak_tracker:
     dependency: transitive
     description:
@@ -244,8 +232,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.0.1"
-<<<<<<< HEAD
-=======
   lints:
     dependency: transitive
     description:
@@ -254,7 +240,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "5.1.1"
->>>>>>> 6b99f94bd690f5c75eee20be8e54042955648ef3
   matcher:
     dependency: transitive
     description:
@@ -279,7 +264,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.16.0"
-<<<<<<< HEAD
   mime:
     dependency: transitive
     description:
@@ -288,8 +272,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.0.0"
-=======
->>>>>>> 6b99f94bd690f5c75eee20be8e54042955648ef3
   path:
     dependency: transitive
     description:
@@ -298,7 +280,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.9.1"
-<<<<<<< HEAD
   plugin_platform_interface:
     dependency: transitive
     description:
@@ -307,8 +288,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.8"
-=======
->>>>>>> 6b99f94bd690f5c75eee20be8e54042955648ef3
   sky_engine:
     dependency: transitive
     description: flutter
@@ -362,7 +341,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.7.4"
-<<<<<<< HEAD
   typed_data:
     dependency: transitive
     description:
@@ -371,8 +349,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.4.0"
-=======
->>>>>>> 6b99f94bd690f5c75eee20be8e54042955648ef3
   vector_math:
     dependency: transitive
     description:
@@ -389,7 +365,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "15.0.0"
-<<<<<<< HEAD
   web:
     dependency: transitive
     description:
@@ -401,8 +376,3 @@ packages:
 sdks:
   dart: ">=3.7.0-0 <4.0.0"
   flutter: ">=3.27.0"
-=======
-sdks:
-  dart: ">=3.8.1 <4.0.0"
-  flutter: ">=3.18.0-18.0.pre.54"
->>>>>>> 6b99f94bd690f5c75eee20be8e54042955648ef3
