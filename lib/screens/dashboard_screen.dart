@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lucide_icons/lucide_icons.dart'; // modern icon package
 
 class DashboardScreen extends StatelessWidget {
   const DashboardScreen({super.key});
@@ -6,78 +7,120 @@ class DashboardScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Nourish Dashboard'),
-        centerTitle: true,
-      ),
-      body: GridView.count(
-        padding: const EdgeInsets.all(20),
-        crossAxisCount: 2,
-        crossAxisSpacing: 20,
-        mainAxisSpacing: 20,
-        children: [
-          _DashboardTile(
-            icon: Icons.camera_alt,
-            label: 'Scan',
-            onTap: () {
-              Navigator.pushNamed(context, '/scan');
-            },
+      backgroundColor: const Color(0xFFF5F6FA),
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.all(16),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              // Header
+              const Text(
+                "Welcome Back 👋",
+                style: TextStyle(
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              const SizedBox(height: 4),
+              const Text(
+                "Your daily skincare companion",
+                style: TextStyle(
+                  fontSize: 16,
+                  color: Colors.black54,
+                ),
+              ),
+              const SizedBox(height: 20),
+
+              // Grid of Cards
+              Expanded(
+                child: GridView.count(
+                  crossAxisCount: 2,
+                  mainAxisSpacing: 16,
+                  crossAxisSpacing: 16,
+                  children: [
+                    _buildFeatureCard(
+                      context,
+                      icon: LucideIcons.camera,
+                      title: "Scan",
+                      color: Colors.pinkAccent,
+                      onTap: () {
+                        Navigator.pushNamed(context, '/scan');
+                      },
+                    ),
+                    _buildFeatureCard(
+                      context,
+                      icon: LucideIcons.bookOpen,
+                      title: "Journal",
+                      color: Colors.teal,
+                      onTap: () {
+                        Navigator.pushNamed(context, '/journal');
+                      },
+                    ),
+                    _buildFeatureCard(
+                      context,
+                      icon: LucideIcons.helpCircle,
+                      title: "Help",
+                      color: Colors.indigo,
+                      onTap: () {
+                        Navigator.pushNamed(context, '/help');
+                      },
+                    ),
+                    _buildFeatureCard(
+                      context,
+                      icon: LucideIcons.info,
+                      title: "About Us",
+                      color: Colors.orange,
+                      onTap: () {
+                        Navigator.pushNamed(context, '/aboutus');
+                      },
+                    ),
+                  ],
+                ),
+              ),
+            ],
           ),
-          _DashboardTile(
-            icon: Icons.edit_note,
-            label: 'Journal',
-            onTap: () {
-              Navigator.pushNamed(context, '/journal');
-            },
-          ),
-          _DashboardTile(
-            icon: Icons.help_outline,
-            label: 'Help',
-            onTap: () {
-              Navigator.pushNamed(context, '/help');
-            },
-          ),
-          _DashboardTile(
-            icon: Icons.info_outline,
-            label: 'About Us',
-            onTap: () {
-              Navigator.pushNamed(context, '/about');
-            },
-          ),
-        ],
+        ),
       ),
     );
   }
-}
 
-class _DashboardTile extends StatelessWidget {
-  final IconData icon;
-  final String label;
-  final VoidCallback onTap;
-
-  const _DashboardTile({
-    required this.icon,
-    required this.label,
-    required this.onTap,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Material(
-      color: Colors.green[100],
-      borderRadius: BorderRadius.circular(12),
-      child: InkWell(
-        onTap: onTap,
-        borderRadius: BorderRadius.circular(12),
-        child: Center(
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Icon(icon, size: 40, color: Colors.green[700]),
-              const SizedBox(height: 10),
-              Text(label, style: const TextStyle(fontSize: 16)),
-            ],
-          ),
+  Widget _buildFeatureCard(BuildContext context,
+      {required IconData icon,
+      required String title,
+      required Color color,
+      required VoidCallback onTap}) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(20),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.05),
+              blurRadius: 8,
+              offset: const Offset(0, 4),
+            ),
+          ],
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            CircleAvatar(
+              radius: 28,
+              backgroundColor: color.withOpacity(0.15),
+              child: Icon(icon, color: color, size: 28),
+            ),
+            const SizedBox(height: 12),
+            Text(
+              title,
+              style: const TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.w600,
+              ),
+            )
+          ],
         ),
       ),
     );
