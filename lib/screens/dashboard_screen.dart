@@ -1,11 +1,26 @@
 import 'package:flutter/material.dart';
-import 'package:lucide_icons/lucide_icons.dart'; // modern icon package
+import 'package:lucide_icons/lucide_icons.dart';
+import 'package:intl/intl.dart'; // for date formatting
 
 class DashboardScreen extends StatelessWidget {
   const DashboardScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    String today = DateFormat('EEEE, d MMMM').format(DateTime.now());
+
+    // Example daily tips list (you can later fetch from backend/Firestore)
+    final List<String> dailyTips = [
+      "Drink at least 8 glasses of water today 💧",
+      "Always wear sunscreen before going outside ☀️",
+      "Don’t forget to moisturize after cleansing 🧴",
+      "Get 7–8 hours of sleep for healthier skin 😴",
+      "Eat more fruits and vegetables for glowing skin 🥦🍎",
+    ];
+
+    // Pick a random tip based on the day
+    String todayTip = dailyTips[DateTime.now().day % dailyTips.length];
+
     return Scaffold(
       backgroundColor: const Color(0xFFF5F6FA),
       body: SafeArea(
@@ -14,15 +29,38 @@ class DashboardScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // Header
-              const Text(
-                "Welcome Back 👋",
-                style: TextStyle(
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold,
-                ),
+              /// Greeting Header
+              Row(
+                children: [
+                  const CircleAvatar(
+                    radius: 28,
+                    backgroundImage:
+                        AssetImage("assets/images/profile.png"), // placeholder
+                  ),
+                  const SizedBox(width: 12),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Text(
+                        "Welcome Back 👋",
+                        style: TextStyle(
+                          fontSize: 22,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      Text(
+                        today,
+                        style: const TextStyle(
+                          fontSize: 14,
+                          color: Colors.black54,
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
               ),
-              const SizedBox(height: 4),
+              const SizedBox(height: 20),
+
               const Text(
                 "Your daily skincare companion",
                 style: TextStyle(
@@ -32,7 +70,40 @@ class DashboardScreen extends StatelessWidget {
               ),
               const SizedBox(height: 20),
 
-              // Grid of Cards
+              /// 🌟 Daily Tip Card
+              Container(
+                padding: const EdgeInsets.all(16),
+                decoration: BoxDecoration(
+                  color: Colors.green.shade50,
+                  borderRadius: BorderRadius.circular(16),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.05),
+                      blurRadius: 8,
+                      offset: const Offset(0, 4),
+                    ),
+                  ],
+                ),
+                child: Row(
+                  children: [
+                    const Icon(LucideIcons.sparkles, color: Colors.green),
+                    const SizedBox(width: 12),
+                    Expanded(
+                      child: Text(
+                        todayTip,
+                        style: const TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w500,
+                          color: Colors.black87,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(height: 20),
+
+              /// Grid of Feature Cards
               Expanded(
                 child: GridView.count(
                   crossAxisCount: 2,
