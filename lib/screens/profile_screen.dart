@@ -2,8 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../theme_provider.dart';
 
-class ProfileScreen extends StatelessWidget {
+class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
+
+  @override
+  State<ProfileScreen> createState() => _ProfileScreenState();
+}
+
+class _ProfileScreenState extends State<ProfileScreen> {
+  String userName = "Whitney Nyaviage";
+  String userRole = "Skincare Enthusiast";
 
   @override
   Widget build(BuildContext context) {
@@ -11,7 +19,6 @@ class ProfileScreen extends StatelessWidget {
 
     return Scaffold(
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.green,
@@ -35,16 +42,17 @@ class ProfileScreen extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 12),
-                  const Text(
-                    "Whitney Nyaviage",
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  Text(
+                    userName,
+                    style: const TextStyle(
+                        fontSize: 20, fontWeight: FontWeight.bold),
                   ),
                   const SizedBox(height: 4),
                   Text(
-                    "Skincare Enthusiast",
+                    userRole,
                     style: TextStyle(
-                      color: themeProvider.isDarkMode 
-                          ? Colors.white70 
+                      color: themeProvider.isDarkMode
+                          ? Colors.white70
                           : Colors.black54,
                     ),
                   ),
@@ -54,15 +62,37 @@ class ProfileScreen extends StatelessWidget {
 
             const SizedBox(height: 30),
 
-            // Settings Section
+            // Account Section
             _buildSectionCard(
               context,
               title: "Account",
               children: [
-                _buildListTile(Icons.person, "Edit Profile"),
+                _buildListTile(
+                  Icons.person,
+                  "Edit Profile",
+                  onTap: () async {
+                    final result = await Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (_) => EditProfileScreen(
+                          currentName: userName,
+                          currentRole: userRole,
+                        ),
+                      ),
+                    );
+                    if (result != null && mounted) {
+                      setState(() {
+                        userName = result["name"];
+                        userRole = result["role"];
+                      });
+                    }
+                  },
+                ),
                 _buildListTile(Icons.lock, "Change Password"),
               ],
             ),
+
+            // Preferences Section
             _buildSectionCard(
               context,
               title: "Preferences",
@@ -76,6 +106,8 @@ class ProfileScreen extends StatelessWidget {
                 ),
               ],
             ),
+
+            // About Section
             _buildSectionCard(
               context,
               title: "About",
@@ -111,7 +143,8 @@ class ProfileScreen extends StatelessWidget {
                         ),
                         ElevatedButton(
                           onPressed: () {
-                            Navigator.pushReplacementNamed(context, '/login');
+                            Navigator.pushReplacementNamed(
+                                context, '/login');
                           },
                           style: ElevatedButton.styleFrom(
                             backgroundColor: Colors.red,
@@ -162,25 +195,104 @@ class ProfileScreen extends StatelessWidget {
   }
 
   // Reusable ListTile
-  static Widget _buildListTile(IconData icon, String title) {
+  static Widget _buildListTile(IconData icon, String title,
+      {VoidCallback? onTap}) {
     return ListTile(
       leading: Icon(icon, color: Colors.green),
       title: Text(title),
       trailing: const Icon(Icons.arrow_forward_ios, size: 16),
-      onTap: () {},
+      onTap: onTap,
     );
   }
 
   // Dark Mode Switch
-  static Widget _buildSwitchTile(
-      BuildContext context, IconData icon, String title, ThemeProvider themeProvider) {
+  static Widget _buildSwitchTile(BuildContext context, IconData icon,
+      String title, ThemeProvider themeProvider) {
     return SwitchListTile(
       secondary: Icon(icon, color: Colors.green),
       title: Text(title),
       value: themeProvider.isDarkMode,
       onChanged: (val) {
-        themeProvider.toggleTheme(val); // ✅ correct dark mode toggle
+        themeProvider.toggleTheme(val);
       },
+    );
+  }
+}
+
+class EditProfileScreen extends StatefulWidget {
+  final String currentName;
+  final String currentRole;
+
+  const EditProfileScreen(
+      {super.key, required this.currentName, required this.currentRole});
+
+  @override
+  State<EditProfileScreen> createState() => _EditProfileScreenState();
+}
+
+class _EditProfileScreenState extends State<EditProfileScreen> {
+  late TextEditingController _nameController;
+  late TextEditingController _roleController;
+
+  @override
+  void initState() {
+    super.initState();
+    _nameController = TextEditingController(text: widget.currentName);
+    _roleController = TextEditingController(text: widget.currentRole);
+  }
+
+  @override
+  void dispose() {
+    _nameController.dispose();
+    _roleController.dispose();
+    super.dispose();
+  }
+
+  void _saveProfile() {
+    Navigator.pop(context, {
+      "name": _nameController.text.trim(),
+      "role": _roleController.text.trim(),
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("Edit Profile"),
+        backgroundColor: Colors.green,
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(20),
+        child: Column(
+          children: [
+            TextField(
+              controller: _nameController,
+              decoration: const InputDecoration(
+                labelText: "Full Name",
+                border: OutlineInputBorder(),
+              ),
+            ),
+            const SizedBox(height: 20),
+            TextField(
+              controller: _roleController,
+              decoration: const InputDecoration(
+                labelText: "Role / Bio",
+                border: OutlineInputBorder(),
+              ),
+            ),
+            const SizedBox(height: 30),
+            ElevatedButton(
+              onPressed: _saveProfile,
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.green,
+                minimumSize: const Size.fromHeight(50),
+              ),
+              child: const Text("Save Changes"),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }

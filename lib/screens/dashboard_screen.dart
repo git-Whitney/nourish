@@ -143,7 +143,7 @@ class DashboardScreen extends StatelessWidget {
                       title: "About Us",
                       color: Colors.orange,
                       onTap: () {
-                        Navigator.pushNamed(context, '/aboutus');
+                        Navigator.pushNamed(context, '/about');
                       },
                     ),
                   ],

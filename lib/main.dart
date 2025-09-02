@@ -75,6 +75,7 @@ class _MainScreenState extends State<MainScreen> {
     ScanScreen(),
     JournalScreen(),
     HelpScreen(),
+    AboutUsScreen(), 
     ProfileScreen(),
   ];
 
@@ -110,6 +111,10 @@ class _MainScreenState extends State<MainScreen> {
             icon: Icon(LucideIcons.helpCircle),
             label: "Help",
           ),
+          BottomNavigationBarItem(
+    icon: Icon(LucideIcons.info),   
+    label: "About",
+  ),
           BottomNavigationBarItem(
             icon: Icon(LucideIcons.user),
             label: "Profile",
