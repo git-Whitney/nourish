@@ -30,16 +30,15 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     final themeProvider = Provider.of<ThemeProvider>(context);
 
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Nourish',
-      
-      theme: ThemeData.light().copyWith(
-        primaryColor: Colors.green,
-        scaffoldBackgroundColor: const Color(0xFFF5F6FA),
-        textTheme: const TextTheme(
-          bodyMedium: TextStyle(fontFamily: 'Roboto'),
-        ),
+   return MaterialApp(
+  debugShowCheckedModeBanner: false,
+  title: 'Nourish',
+  theme: ThemeData.light().copyWith(
+    primaryColor: Colors.green,
+    scaffoldBackgroundColor: const Color(0xFFF5F6FA),
+    textTheme: const TextTheme(
+      bodyMedium: TextStyle(fontFamily: 'Roboto'),
+    ),
       ),
       darkTheme: ThemeData.dark(),
       themeMode: themeProvider.themeMode,
@@ -71,13 +70,26 @@ class _MainScreenState extends State<MainScreen> {
   int _currentIndex = 0;
 
   final List<Widget> _screens = const [
-    DashboardScreen(),
-    ScanScreen(),
-    JournalScreen(),
-    HelpScreen(),
-    AboutUsScreen(), 
-    ProfileScreen(),
+    DashboardScreen(), // 0
+    ScanScreen(),      // 1
+    JournalScreen(),   // 2
+    HelpScreen(),      // 3
+    AboutUsScreen(),   // 4
+    ProfileScreen(),   // 5
   ];
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+
+    // 👇 Check if arguments were passed from Navigator.pushReplacementNamed
+    final args = ModalRoute.of(context)?.settings.arguments;
+    if (args is int && args >= 0 && args < _screens.length) {
+      setState(() {
+        _currentIndex = args;
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -112,9 +124,9 @@ class _MainScreenState extends State<MainScreen> {
             label: "Help",
           ),
           BottomNavigationBarItem(
-    icon: Icon(LucideIcons.info),   
-    label: "About",
-  ),
+            icon: Icon(LucideIcons.info),
+            label: "About",
+          ),
           BottomNavigationBarItem(
             icon: Icon(LucideIcons.user),
             label: "Profile",

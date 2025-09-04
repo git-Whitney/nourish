@@ -1,16 +1,43 @@
 import 'package:flutter/material.dart';
 
 class EditProfileScreen extends StatefulWidget {
-  const EditProfileScreen({super.key});
+  final String currentName;
+  final String currentRole;
+
+  const EditProfileScreen({
+    super.key,
+    required this.currentName,
+    required this.currentRole,
+  });
 
   @override
   State<EditProfileScreen> createState() => _EditProfileScreenState();
 }
 
 class _EditProfileScreenState extends State<EditProfileScreen> {
-  final _formKey = GlobalKey<FormState>();
-  String name = "";
-  String email = "";
+  late TextEditingController _nameController;
+  late TextEditingController _roleController;
+
+  @override
+  void initState() {
+    super.initState();
+    _nameController = TextEditingController(text: widget.currentName);
+    _roleController = TextEditingController(text: widget.currentRole);
+  }
+
+  @override
+  void dispose() {
+    _nameController.dispose();
+    _roleController.dispose();
+    super.dispose();
+  }
+
+  void _saveProfile() {
+    Navigator.pop(context, {
+      "name": _nameController.text.trim(),
+      "role": _roleController.text.trim(),
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -21,35 +48,26 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: Form(
-          key: _formKey,
-          child: Column(
-            children: [
-              TextFormField(
-                decoration: const InputDecoration(labelText: "Name"),
-                onSaved: (value) => name = value ?? "",
+        child: Column(
+          children: [
+            TextField(
+              controller: _nameController,
+              decoration: const InputDecoration(labelText: "Name"),
+            ),
+            const SizedBox(height: 16),
+            TextField(
+              controller: _roleController,
+              decoration: const InputDecoration(labelText: "Role"),
+            ),
+            const SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: _saveProfile,
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.green,
               ),
-              const SizedBox(height: 16),
-              TextFormField(
-                decoration: const InputDecoration(labelText: "Email"),
-                onSaved: (value) => email = value ?? "",
-              ),
-              const SizedBox(height: 20),
-              ElevatedButton(
-                onPressed: () {
-                  _formKey.currentState?.save();
-                  Navigator.pop(context, {
-                    "name": name,
-                    "email": email,
-                  }); // return data
-                },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.green,
-                ),
-                child: const Text("Save Changes"),
-              ),
-            ],
-          ),
+              child: const Text("Save Changes"),
+            ),
+          ],
         ),
       ),
     );

@@ -1,6 +1,9 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 import '../theme_provider.dart';
+import 'edit_profile_screen.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -10,8 +13,22 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
+  File? _profileImage;
+  final ImagePicker _picker = ImagePicker();
+
   String userName = "Whitney Nyaviage";
   String userRole = "Skincare Enthusiast";
+
+  Future<void> _pickImage() async {
+    final XFile? pickedFile =
+        await _picker.pickImage(source: ImageSource.gallery);
+
+    if (pickedFile != null) {
+      setState(() {
+        _profileImage = File(pickedFile.path); // ✅ updates UI
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -29,16 +46,28 @@ class _ProfileScreenState extends State<ProfileScreen> {
           children: [
             const SizedBox(height: 20),
 
-            // Profile Header
+            // Profile Header with editable photo
             Center(
               child: Column(
                 children: [
-                  CircleAvatar(
-                    radius: 48,
-                    backgroundColor: Colors.green,
-                    child: const CircleAvatar(
-                      radius: 45,
-                      backgroundImage: AssetImage('assets/avatar.png'),
+                  GestureDetector(
+                    onTap: _pickImage, // 👈 Tap to change photo
+                    child: CircleAvatar(
+                      radius: 55,
+                      backgroundColor: Colors.green,
+                      child: CircleAvatar(
+                        radius: 52,
+                        backgroundImage: _profileImage != null
+                            ? FileImage(_profileImage!)
+                            : null,
+                        child: _profileImage == null
+                            ? const Icon(
+                                Icons.person,
+                                size: 52,
+                                color: Colors.white,
+                              )
+                            : null,
+                      ),
                     ),
                   ),
                   const SizedBox(height: 12),
@@ -112,8 +141,28 @@ class _ProfileScreenState extends State<ProfileScreen> {
               context,
               title: "About",
               children: [
-                _buildListTile(Icons.info, "About Us"),
-                _buildListTile(Icons.help, "Help & Support"),
+                _buildListTile(
+                  Icons.info,
+                  "About Us",
+                  onTap: () {
+                    Navigator.pushReplacementNamed(
+                      context,
+                      '/dashboard',
+                      arguments: 4, // 👈 "About" index in bottom nav
+                    );
+                  },
+                ),
+                _buildListTile(
+                  Icons.help,
+                  "Help & Support",
+                  onTap: () {
+                    Navigator.pushReplacementNamed(
+                      context,
+                      '/dashboard',
+                      arguments: 3, // 👈 "Help" index in bottom nav
+                    );
+                  },
+                ),
               ],
             ),
 
@@ -158,6 +207,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 child: const Text("Logout"),
               ),
             ),
+
             const SizedBox(height: 20),
           ],
         ),
@@ -183,8 +233,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
               child: Text(
                 title,
-                style:
-                    const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                style: const TextStyle(
+                    fontSize: 16, fontWeight: FontWeight.bold),
               ),
             ),
             ...children,
@@ -216,83 +266,4 @@ class _ProfileScreenState extends State<ProfileScreen> {
         themeProvider.toggleTheme(val);
       },
     );
-  }
-}
-
-class EditProfileScreen extends StatefulWidget {
-  final String currentName;
-  final String currentRole;
-
-  const EditProfileScreen(
-      {super.key, required this.currentName, required this.currentRole});
-
-  @override
-  State<EditProfileScreen> createState() => _EditProfileScreenState();
-}
-
-class _EditProfileScreenState extends State<EditProfileScreen> {
-  late TextEditingController _nameController;
-  late TextEditingController _roleController;
-
-  @override
-  void initState() {
-    super.initState();
-    _nameController = TextEditingController(text: widget.currentName);
-    _roleController = TextEditingController(text: widget.currentRole);
-  }
-
-  @override
-  void dispose() {
-    _nameController.dispose();
-    _roleController.dispose();
-    super.dispose();
-  }
-
-  void _saveProfile() {
-    Navigator.pop(context, {
-      "name": _nameController.text.trim(),
-      "role": _roleController.text.trim(),
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text("Edit Profile"),
-        backgroundColor: Colors.green,
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(20),
-        child: Column(
-          children: [
-            TextField(
-              controller: _nameController,
-              decoration: const InputDecoration(
-                labelText: "Full Name",
-                border: OutlineInputBorder(),
-              ),
-            ),
-            const SizedBox(height: 20),
-            TextField(
-              controller: _roleController,
-              decoration: const InputDecoration(
-                labelText: "Role / Bio",
-                border: OutlineInputBorder(),
-              ),
-            ),
-            const SizedBox(height: 30),
-            ElevatedButton(
-              onPressed: _saveProfile,
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.green,
-                minimumSize: const Size.fromHeight(50),
-              ),
-              child: const Text("Save Changes"),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
+  }}
